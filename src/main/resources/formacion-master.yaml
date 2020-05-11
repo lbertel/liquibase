@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: createTable
+      author: Luis Bertel
+      context: dev, test
+      changes:
+        - sqlFile:
+            dbms: mysql
+            encoding: utf8
+            endDelimiter: \n/\s*\n|\n/\s*$
+            path: db-scripts/01-create-training-schema.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: insertTableAddresses
+      author: Luis Bertel
+      context: dev, test
+      changes:
+        - sqlFile:
+            dbms: mysql
+            encoding: utf8
+            path: db-scripts/02-insert-data-training.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

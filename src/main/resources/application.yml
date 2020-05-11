@@ -1,0 +1,65 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    platform: mysql
+    driverClassName: com.mysql.cj.jdbc.Driver
+  liquibase:
+    changeLog: classpath:formacion-master.yaml
+  main:
+    show_banner: true
+  messages:
+    encoding: UTF-8
+---
+spring:
+  profile: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/formacion?serverTimezone=America/Bogota&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: 123nose
+name: db-dev
+enviroment: develop
+---
+spring:
+  profile: test
+  datasource:
+    url: some-url-test
+    username: some-username-test
+    password: some-password-test
+  main:
+    show_banner: false
+name: db-test
+enviroment: test
+---
+spring:
+  profile: prod
+  datasource:
+    url: some-url-prod
+    username: some-username-prod
+    password: some-password-prod
+  main:
+    show_banner: false
+name: db-prod
+enviroment: production
+
+# to use operating system variables
+#---
+#spring:
+#   profile: test
+#   datasource:
+#     url: ${DATABASE_URL_TEST}
+#     username: ${DATABASE_USERNAME_TEST}
+#     password: ${DATABASE_PASSWORD_TEST}
+#  main:
+#    show_banner = false
+#name: db-test
+#enviroment: test
+#---
+#spring:
+#  profile: prod
+#  datasource:
+#    url: ${DATABASE_URL_PROD}
+#    username: ${DATABASE_USERNAME_PROD}
+#    password: ${DATABASE_PASSWORD_PROD}
+#name: db-prod
+#enviroment: production
